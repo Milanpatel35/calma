@@ -1,0 +1,11 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 💬 Questions & ideas
+    url: https://github.com/Milanpatel35/calma/discussions
+    about: Ask questions and share ideas in GitHub Discussions.
+  - name: 🛡️ Report a security vulnerability
+    url: https://github.com/Milanpatel35/calma/security/advisories/new
+    about: Please report security issues privately.
+  - name: 🆘 My Mac stopped charging
+    url: https://github.com/Milanpatel35/calma/blob/main/docs/RECOVERY.md
+    about: Step-by-step recovery guide.

@@ -1,0 +1,88 @@
+name: 🔬 Hardware report
+description: Tell us which Calma features work on your Mac. This is the most useful contribution you can make!
+labels: ["hardware-report"]
+title: "Hardware report: <model id> on macOS <version>"
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thank you! Reports like this fill in the compatibility table in [docs/SMC_KEYS.md](https://github.com/Milanpatel35/calma/blob/main/docs/SMC_KEYS.md).
+  - type: dropdown
+    id: family
+    attributes:
+      label: Mac family
+      options:
+        - MacBook Air (Apple Silicon)
+        - MacBook Pro 13" (Apple Silicon)
+        - MacBook Pro 14"/16" (Apple Silicon)
+        - MacBook Air (Intel)
+        - MacBook Pro (Intel, with T2)
+        - MacBook Pro (Intel, without T2)
+        - MacBook (Intel, 12")
+        - Other
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Model identifier
+      description: Output of `sysctl -n hw.model`
+      placeholder: "Mac14,2"
+    validations:
+      required: true
+  - type: input
+    id: chip
+    attributes:
+      label: Chip
+      placeholder: "M2 / M3 Pro / Intel Core i7"
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version and build
+      description: Output of `sw_vers -productVersion` and `sw_vers -buildVersion`
+      placeholder: "26.1 (25B78)"
+    validations:
+      required: true
+  - type: input
+    id: calma-version
+    attributes:
+      label: Calma version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: backend
+    attributes:
+      label: Detected backend
+      description: Shown in Settings → About, or in `calma json` under capabilities.backend
+      placeholder: "appleSiliconModern"
+  - type: checkboxes
+    id: works
+    attributes:
+      label: Which features work?
+      description: Tick only what you tested and confirmed.
+      options:
+        - label: Charge limit holds (battery stops charging at the limit)
+        - label: Charging resumes below the limit
+        - label: Drain to… (runs from battery while plugged in)
+        - label: Full Charge
+        - label: Heat Guard
+        - label: Pause on Sleep
+        - label: MagSafe Light (green/amber/off)
+        - label: Power Flow shows sensible numbers
+        - label: Emergency Reset restores normal charging
+  - type: textarea
+    id: probe
+    attributes:
+      label: calma probe output
+      description: Run `calma probe` (read-only, no root needed) and paste the full output.
+      render: text
+    validations:
+      required: true
+  - type: textarea
+    id: notes
+    attributes:
+      label: Notes
+      description: Anything odd? Other battery apps installed?
