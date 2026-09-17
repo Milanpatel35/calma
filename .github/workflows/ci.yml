@@ -2,9 +2,9 @@ name: CI
 
 on:
   push:
-    branches: [main]
+    branches: [main, dev]
   pull_request:
-    branches: [main]
+    branches: [main, dev]
 
 concurrency:
   group: ci-${{ github.ref }}
@@ -14,6 +14,18 @@ permissions:
   contents: read
 
 jobs:
+  source-branch:
+    name: Source branch
+    runs-on: ubuntu-latest
+    steps:
+      - name: Only dev can be merged into main
+        if: github.event_name == 'pull_request' && github.base_ref == 'main' && github.head_ref != 'dev'
+        run: |
+          echo "::error::Pull requests into main must come from dev (this one is from '${{ github.head_ref }}'). Retarget it to dev."
+          exit 1
+      - name: OK
+        run: echo "Branch flow is valid."
+
   build-and-test:
     name: Build & test
     runs-on: macos-latest

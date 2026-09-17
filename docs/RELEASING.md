@@ -4,19 +4,21 @@ Releases are built by `.github/workflows/release.yml` whenever a maintainer push
 
 ## Steps
 
-1. Make sure `main` is green.
-2. Update the version:
+1. On `dev`, make sure CI is green and the build has been tested on real hardware.
+2. Update the version (on `dev`):
    - `CalmaVersion.current` in `Sources/CalmaKit/Models.swift`
    - `CFBundleShortVersionString` / `CFBundleVersion` in `Resources/Info.plist`, if you're not letting `Scripts/build-app.sh` stamp it
 3. In `CHANGELOG.md`, move `[Unreleased]` entries under a new `## [X.Y.Z] - YYYY-MM-DD` heading and update the compare links.
-4. Commit: `chore: release vX.Y.Z`.
-5. Tag and push:
+4. Commit to `dev`: `chore: release vX.Y.Z`.
+5. Open a pull request from `dev` into `main`, wait for CI, and merge it. `main` can't be pushed to directly.
+6. Tag the merged `main` and push the tag:
    ```sh
+   git switch main && git pull
    git tag -a vX.Y.Z -m "Calma X.Y.Z"
-   git push origin main --tags
+   git push origin vX.Y.Z
    ```
-6. The workflow builds a universal `Calma.app`, packages `Calma-X.Y.Z.dmg`, `Calma-X.Y.Z.zip` and `SHA256SUMS.txt`, and publishes a GitHub Release with generated notes. Tags containing `-` (such as `v0.2.0-beta.1`) are marked as pre-releases.
-7. Edit the release notes: add highlights, the macOS 27 status, and install instructions.
+7. The workflow builds a universal `Calma.app`, packages `Calma-X.Y.Z.dmg`, `Calma-X.Y.Z.zip` and `SHA256SUMS.txt`, and publishes a GitHub Release with generated notes. Tags containing `-` (such as `v0.2.0-beta.1`) are marked as pre-releases.
+8. Edit the release notes: add highlights, the macOS 27 status, and install instructions.
 
 ## Local build
 

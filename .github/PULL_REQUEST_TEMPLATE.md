@@ -1,3 +1,5 @@
+<!-- Pull requests go into `dev`. Only maintainers open the `dev` → `main` release PR. -->
+
 ## What does this change?
 
 <!-- A short description. Link the issue: "Closes #123" -->
