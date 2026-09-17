@@ -65,7 +65,7 @@ jobs:
           cat SHA256SUMS.txt
 
       - name: Publish GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           name: Calma ${{ env.VERSION }}
           prerelease: ${{ contains(github.ref_name, '-') }}
