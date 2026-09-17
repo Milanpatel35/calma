@@ -1,0 +1,69 @@
+name: 🐛 Bug report
+description: Something isn't working as expected
+labels: ["bug", "needs-triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting! **If your Mac has stopped charging**, first follow [docs/RECOVERY.md](https://github.com/Milanpatel35/calma/blob/main/docs/RECOVERY.md). A full shutdown or SMC reset always restores stock behaviour.
+
+        Security issues? Please [report them privately](https://github.com/Milanpatel35/calma/security/advisories/new) instead.
+  - type: textarea
+    id: what-happened
+    attributes:
+      label: What happened?
+      description: What did you expect, and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Set limit to 80%
+        2. Plug in at 60%
+        3. …
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Calma version
+      placeholder: "0.1.0"
+    validations:
+      required: true
+  - type: input
+    id: model
+    attributes:
+      label: Mac model identifier
+      description: Output of `sysctl -n hw.model`
+      placeholder: "Mac16,1"
+    validations:
+      required: true
+  - type: input
+    id: macos
+    attributes:
+      label: macOS version
+      description: Output of `sw_vers -productVersion`
+      placeholder: "26.1"
+    validations:
+      required: true
+  - type: textarea
+    id: status
+    attributes:
+      label: calma status
+      description: Output of `calma status` (or `calma json`)
+      render: text
+  - type: textarea
+    id: log
+    attributes:
+      label: Helper log
+      description: Output of `tail -n 100 /Library/Logs/Calma/calmad.log`
+      render: text
+  - type: checkboxes
+    id: other-apps
+    attributes:
+      label: Checks
+      options:
+        - label: No other charge-limiting app or helper is installed or running
+        - label: I searched existing issues

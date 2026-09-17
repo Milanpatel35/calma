@@ -1,0 +1,42 @@
+name: ✨ Feature request
+description: Suggest an idea for Calma
+labels: ["enhancement"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Calma's principles: everything free, no telemetry, safety over features, native macOS. Ideas that fit these are most likely to land.
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+  - type: textarea
+    id: solution
+    attributes:
+      label: Proposed solution
+    validations:
+      required: true
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+  - type: dropdown
+    id: area
+    attributes:
+      label: Area
+      options:
+        - Charge control
+        - Protection (Heat Guard, Recalibrate)
+        - Schedule
+        - Menu bar / UI
+        - CLI / Shortcuts
+        - Docs / website
+        - Other
+  - type: checkboxes
+    id: contribute
+    attributes:
+      label: Contribution
+      options:
+        - label: I'd like to help implement this

@@ -1,0 +1,6 @@
+# Tests may force-try and force-unwrap fixtures.
+disabled_rules:
+  - force_try
+  - force_unwrapping
+  - function_body_length
+  - type_body_length

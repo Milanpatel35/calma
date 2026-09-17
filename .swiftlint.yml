@@ -1,0 +1,76 @@
+# SwiftLint configuration for Calma. CI runs `swiftlint --strict`.
+included:
+  - Sources
+  - Tests
+excluded:
+  - .build
+  - dist
+  - Sources/CSMC
+
+disabled_rules:
+  - todo
+  - trailing_comma
+
+opt_in_rules:
+  - closure_spacing
+  - empty_count
+  - explicit_init
+  - fatal_error_message
+  - first_where
+  - force_unwrapping
+  - implicit_return
+  - modifier_order
+  - overridden_super_call
+  - redundant_nil_coalescing
+  - sorted_first_last
+  - vertical_whitespace_closing_braces
+
+analyzer_rules:
+  - unused_declaration
+  - unused_import
+
+line_length:
+  warning: 160
+  error: 200
+  ignores_comments: true
+  ignores_urls: true
+
+identifier_name:
+  min_length: 1
+  max_length: 60
+  excluded: [x, y, i, n, id, fd, tv, ok]
+
+type_name:
+  min_length: 2
+  max_length: 50
+
+function_body_length:
+  warning: 80
+  error: 150
+
+type_body_length:
+  warning: 400
+  error: 600
+
+file_length:
+  warning: 600
+  error: 1000
+
+cyclomatic_complexity:
+  warning: 25
+  error: 35
+
+nesting:
+  type_level: 2
+
+large_tuple:
+  warning: 3
+  error: 4
+
+force_unwrapping: warning
+implicit_return:
+  included: [closure, getter]
+
+function_parameter_count:
+  warning: 7
+  error: 8

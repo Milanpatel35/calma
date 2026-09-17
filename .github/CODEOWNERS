@@ -1,0 +1,7 @@
+# Default reviewers for everything
+* @Milanpatel35
+
+# Extra-careful review for code that touches hardware or runs as root
+/Sources/calmad/        @Milanpatel35
+/Sources/CalmaHardware/ @Milanpatel35
+/Sources/CSMC/          @Milanpatel35
