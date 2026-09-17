@@ -28,6 +28,7 @@ struct ChargePane: View {
                             .frame(width: 52)
                             .multilineTextAlignment(.trailing)
                             .accessibilityLabel(Text("Charge limit percent"))
+                            .disabled(!model.canControl)
                         Text("%").foregroundStyle(.secondary)
                     }
                     ChargeLimitSlider(limit: limit, level: model.level,
@@ -73,6 +74,7 @@ struct ChargePane: View {
                         .frame(minWidth: 40, alignment: .trailing)
                     Stepper("Drain target", value: $drainTarget, in: CalmaLimits.minimumChargeLimit...95, step: 5)
                         .labelsHidden()
+                        .disabled(!model.canDrain)
                     Button("Drain") { confirmDrain = true }
                         .disabled(!model.canDrain)
                 }

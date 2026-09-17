@@ -65,6 +65,22 @@ final class AppModel: ObservableObject {
 
     var canControl: Bool { helperState == .running && capabilities.canInhibitCharging }
     var canDrain: Bool { helperState == .running && capabilities.canDrain && capabilities.canInhibitCharging }
+    /// The helper is running, but this firmware has no documented charge-control key (e.g. macOS 27).
+    var isMonitoringOnly: Bool { helperState == .running && capabilities.backend == .unsupported }
+
+    /// Commands the helper would refuse on this Mac. The UI disables them; this also stops
+    /// stray senders (text fields, URL links) from surfacing the refusal as an error.
+    private func isUnavailable(_ command: CalmaCommand) -> Bool {
+        guard helperState == .running else { return false }
+        switch command {
+        case .setChargeLimit, .setChargingPaused, .startFullCharge:
+            return !capabilities.canInhibitCharging
+        case .startDrain, .startRecalibration:
+            return !(capabilities.canDrain && capabilities.canInhibitCharging)
+        default:
+            return false
+        }
+    }
 
     var summary: String {
         if let status { return status.summary }
@@ -153,6 +169,10 @@ final class AppModel: ObservableObject {
     /// Sends a command and refreshes status from the response.
     func send(_ command: CalmaCommand) {
         guard !isPreview else { return }
+        guard !isUnavailable(command) else {
+            pendingLimit = nil
+            return
+        }
         busy = true
         Task.detached(priority: .userInitiated) {
             let result: Result<CalmaResponse, Error> = Result { try CalmaClient.send(command) }

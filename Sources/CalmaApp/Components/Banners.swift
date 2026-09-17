@@ -88,9 +88,11 @@ struct FirmwareBanner: View {
     }
 
     private var firmwareMessage: Text {
-        var text = Text("Your Mac's firmware (macOS 27+) doesn't expose a documented charge-control key yet. Calma is in monitoring mode.")
+        var text = Text("macOS 27 firmware doesn't let apps control charging, so Calma's limit, drain and pause controls are off.")
+            + Text(" ")
+            + Text("Battery health, Power Flow, True Percentage and Low/High Power Mode still work.")
         if let native = model.capabilities.nativeChargeLimit {
-            text = text + Text(" ") + Text("macOS's built-in charge limit is set to \(native)%.")
+            text = text + Text(" ") + Text("macOS's own charge limit is protecting your battery at \(native)%.")
         }
         return text
     }
