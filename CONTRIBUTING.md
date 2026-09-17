@@ -75,13 +75,22 @@ Read [docs/SAFETY.md](docs/SAFETY.md) first. It is not optional.
 ## Pull requests
 
 1. Open an issue first for anything bigger than a bug fix, so we can agree on the approach before you spend time on it.
-2. Branch from `main` and name the branch `feat/…`, `fix/…`, `docs/…` or `chore/…`.
+2. Branch from `dev` and name the branch `feat/…`, `fix/…`, `docs/…` or `chore/…`. Open your PR against `dev`, never `main`.
 3. Use [Conventional Commits](https://www.conventionalcommits.org/), for example `feat: add drift range to CLI`.
 4. Keep each PR to one concern.
 5. Add your change to `CHANGELOG.md` under `## [Unreleased]`.
 6. Fill in the PR template, including the hardware you tested on.
 
-CI must pass (build, tests, SwiftLint). A maintainer will review; expect a round or two of comments, and don't take them personally.
+CI must pass (build, tests, SwiftLint).
+
+### Branches
+
+| Branch | Purpose |
+|---|---|
+| `dev` | Default branch. Every change is merged here first and tested. |
+| `main` | Stable and live. The website deploys from it and releases are tagged on it. It only changes through a `dev` → `main` pull request, once `dev` has been verified. |
+
+ A maintainer will review; expect a round or two of comments, and don't take them personally.
 
 ## Code style
 
@@ -102,7 +111,7 @@ These aren't up for negotiation, so you don't spend effort on a PR that can't be
 
 ## Releases
 
-Maintainers tag `vX.Y.Z` on `main`, and the release workflow builds, signs (when secrets are configured) and publishes. See [docs/RELEASING.md](docs/RELEASING.md).
+Maintainers merge `dev` into `main`, tag `vX.Y.Z` on `main`, and the release workflow builds, signs (when secrets are configured) and publishes. See [docs/RELEASING.md](docs/RELEASING.md).
 
 ## Recognition
 

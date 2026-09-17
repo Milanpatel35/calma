@@ -16,9 +16,13 @@ struct PopoverView: View {
             HelperBanner()
             FirmwareBanner()
             MessageBanner()
-            limitSection
-            ActiveModeCard()
-            quickActions
+            if model.isMonitoringOnly {
+                nativeLimitSection
+            } else {
+                limitSection
+                ActiveModeCard()
+                quickActions
+            }
             if let owner = model.status?.lastChangedBy, owner != NSUserName(), !model.isPreview {
                 Label("Limit last set by \(owner)", systemImage: "person.2")
                     .font(.caption)
@@ -87,6 +91,23 @@ struct PopoverView: View {
             .padding(.horizontal, 8)
             .padding(.vertical, 4)
             .background(Capsule().fill(tint.opacity(0.14)))
+    }
+
+    /// Monitoring mode: show the limit macOS enforces instead of controls that can't act.
+    private var nativeLimitSection: some View {
+        HStack {
+            VStack(alignment: .leading, spacing: 2) {
+                Text("Charge Limit").font(.headline)
+                Text("Set by macOS in Battery Settings")
+                    .font(.caption)
+                    .foregroundStyle(.secondary)
+            }
+            Spacer()
+            Text(model.capabilities.nativeChargeLimit.map { "\($0)%" } ?? String(localized: "Off"))
+                .font(.headline)
+                .monospacedDigit()
+        }
+        .accessibilityElement(children: .combine)
     }
 
     private var limitSection: some View {
