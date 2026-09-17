@@ -18,7 +18,7 @@ jobs:
     name: Build & test
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Show toolchain
         run: |
@@ -38,7 +38,7 @@ jobs:
     name: SwiftLint
     runs-on: macos-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
 
       - name: Install SwiftLint
         run: brew install swiftlint
