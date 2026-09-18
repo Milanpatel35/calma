@@ -35,10 +35,12 @@ Lithium-ion batteries wear fastest when they sit at 100%. If your Mac lives on a
 <a href="https://github.com/Milanpatel35/calma/releases/latest"><b>⬇️ Download the latest Calma.dmg</b></a>
 
 1. Open the `.dmg` and drag **Calma** to **Applications**.
-2. The build is not notarized yet. The first time you open it, **right-click → Open**, or run:
-   ```sh
-   xattr -dr com.apple.quarantine /Applications/Calma.app
-   ```
+2. Open Calma. Because these builds aren't notarized yet, macOS says *"Apple could not verify 'Calma' is free of malware"* and offers only **Move to Trash** and **Done**. Click **Done**, then:
+   - **macOS 15 or later** (including 26 and 27):  **→ System Settings → Privacy & Security**, scroll to **Security**, click **Open Anyway** next to *"Calma" was blocked*, and confirm. Apple removed the old right-click → Open shortcut in macOS 15.
+   - **macOS 13–14:** right-click Calma in Applications and choose **Open**.
+   - **Terminal, any version:** `xattr -dr com.apple.quarantine /Applications/Calma.app`
+
+   Full walkthrough, including how to verify the download: [docs/INSTALL.md](docs/INSTALL.md).
 3. Click **Install Helper** in the menu bar popover and enter your administrator password. The helper (`calmad`) is the small background service that talks to the charging controller.
 
 **Homebrew:** coming soon (tracked in the roadmap).

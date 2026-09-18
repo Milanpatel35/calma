@@ -29,7 +29,7 @@ ls dist/
 
 ## Signing and notarization (optional)
 
-Without secrets, builds are **ad-hoc signed**. They work, but users must right-click → Open the first time. To produce Developer ID–signed, notarized builds, add these **repository secrets**:
+Without secrets, builds are **ad-hoc signed**. They work, but Gatekeeper blocks the first launch and users have to approve the app in System Settings → Privacy & Security (see [INSTALL.md](INSTALL.md)). To produce Developer ID–signed, notarized builds, add these **repository secrets**:
 
 | Secret | Contents |
 |---|---|

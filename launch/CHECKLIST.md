@@ -27,7 +27,7 @@
 
 - [ ] `git tag -a v0.1.0 -m "Calma 0.1.0" && git push --tags`
 - [ ] Release workflow succeeded, with DMG, ZIP and `SHA256SUMS.txt` attached
-- [ ] Release notes include install steps, the right-click → Open note and the macOS 27 status
+- [ ] Release notes include install steps, the Privacy & Security "Open Anyway" note (link docs/INSTALL.md) and the macOS 27 status
 - [ ] Download link on the website works (`/releases/latest`)
 - [ ] Open the good-first-issues below and pin "macOS 27 charge control" and "Hardware reports wanted"
 

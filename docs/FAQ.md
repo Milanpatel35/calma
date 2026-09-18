@@ -24,8 +24,8 @@ Only in monitoring mode, for now. macOS 27 firmware removed the documented charg
 ### Why does it need an administrator password?
 Changing charging behaviour means writing to the SMC, which only root can do. Calma installs one small helper (`calmad`) for that, and everything else runs as your user.
 
-### macOS says the app "can't be opened" or is from an unidentified developer.
-Community builds aren't notarized yet (that needs a paid Apple Developer account). Right-click the app and choose **Open**, or run `xattr -dr com.apple.quarantine /Applications/Calma.app`. You can also [build it yourself](../README.md#build-from-source).
+### macOS says "Apple could not verify Calma is free of malware", with only Trash and Done.
+Community builds aren't notarized yet (that needs a paid Apple Developer account), so Gatekeeper can't confirm who built the app. Click **Done**, then open  **→ System Settings → Privacy & Security**, scroll to **Security** and click **Open Anyway** next to *"Calma" was blocked*. On macOS 13–14 you can right-click the app and choose **Open** instead; Apple removed that shortcut in macOS 15. From Terminal, `xattr -dr com.apple.quarantine /Applications/Calma.app` works on any version. Step-by-step: [INSTALL.md](INSTALL.md). You can also [build it yourself](../README.md#build-from-source) — self-built apps are never quarantined.
 
 ### Does Calma collect data?
 No. The only network request is the optional update check against GitHub Releases, and it's off by default.

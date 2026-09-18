@@ -76,6 +76,49 @@ ditto -c -k --keepParent "${APP}" "${ZIP}"
 STAGING="$(mktemp -d)"
 cp -R "${APP}" "${STAGING}/"
 ln -s /Applications "${STAGING}/Applications"
+# Ad-hoc builds are blocked by Gatekeeper on first launch; spell out the way through.
+if [[ -z "${DEVELOPER_ID:-}" ]]; then
+    cat > "${STAGING}/READ ME FIRST.txt" <<'NOTE'
+Opening Calma the first time
+============================
+
+1. Drag Calma onto the Applications folder in this window.
+
+2. Open Calma from Applications. macOS will say:
+
+     "Apple could not verify 'Calma' is free of malware..."
+
+   Click "Done". Do NOT click "Move to Trash".
+
+3. Approve it once:
+
+   macOS 15 or later (including 26 and 27)
+     Apple menu > System Settings > Privacy & Security
+     Scroll to "Security", then click "Open Anyway" next to
+     '"Calma" was blocked to protect your Mac' and confirm.
+
+   macOS 13 or 14
+     Right-click Calma in Applications and choose "Open", then "Open".
+
+   Terminal (any version)
+     xattr -dr com.apple.quarantine /Applications/Calma.app
+
+4. Click "Install Helper..." in Calma's menu bar popover and enter your
+   administrator password once.
+
+Why does this happen?
+---------------------
+Calma is free and open source, and these builds are not notarized by Apple
+(notarization needs a paid Apple Developer membership). Gatekeeper can't
+confirm who built the app, so it warns you. Nothing was found inside the app.
+
+Verify your download with the release's SHA256SUMS.txt:
+  shasum -a 256 -c SHA256SUMS.txt
+
+Full guide: https://github.com/Milanpatel35/calma/blob/main/docs/INSTALL.md
+Source code: https://github.com/Milanpatel35/calma
+NOTE
+fi
 hdiutil create -volname "Calma ${VERSION}" -srcfolder "${STAGING}" -ov -format UDZO "${DMG}" >/dev/null
 rm -rf "${STAGING}"
 if [[ -n "${DEVELOPER_ID:-}" ]]; then
