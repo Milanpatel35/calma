@@ -7,6 +7,8 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+## [0.1.1] - 2026-09-18
+
 ### Added
 
 - `docs/INSTALL.md`: first-launch guide covering Gatekeeper's "Apple could not verify" dialog.
@@ -44,5 +46,6 @@ First public pre-release.
 - VoiceOver labels, keyboard navigation and reduced motion support.
 - Documentation, a landing page, CI, and release and Pages workflows.
 
-[Unreleased]: https://github.com/Milanpatel35/calma/compare/v0.1.0...HEAD
+[Unreleased]: https://github.com/Milanpatel35/calma/compare/v0.1.1...HEAD
+[0.1.1]: https://github.com/Milanpatel35/calma/compare/v0.1.0...v0.1.1
 [0.1.0]: https://github.com/Milanpatel35/calma/releases/tag/v0.1.0
