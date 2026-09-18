@@ -2,6 +2,20 @@
 
 Calma is free, open-source software distributed outside the App Store. Releases are **not notarized by Apple yet**, because notarization requires a paid Apple Developer Program membership. So the first time you open Calma, macOS shows a warning. This page explains the warning and how to get past it safely.
 
+## Quickest way: no warning at all
+
+Paste this into Terminal. It downloads the latest release, checks it against the published SHA-256 checksum, installs it to `/Applications` and clears the quarantine flag macOS puts on downloads, so **the "Apple could not verify" dialog never appears**:
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/Milanpatel35/calma/main/Scripts/install.sh | bash
+```
+
+Read [the script](../Scripts/install.sh) first if you'd rather not pipe something into `bash` unseen — it's 90 lines and does exactly what's described above. To pin a version: `VERSION=v0.1.1 bash install.sh`.
+
+This isn't a security bypass: the download happens over HTTPS and its checksum is verified before anything is installed. The quarantine dialog exists to make you pause on files that arrived from a browser, and the check it offers has already been done here.
+
+Prefer clicking through the Finder? Use the steps below.
+
 ## 1. Install the app
 
 1. Download `Calma-<version>.dmg` from the [latest release](https://github.com/Milanpatel35/calma/releases/latest).
