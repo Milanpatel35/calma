@@ -99,7 +99,7 @@ GPL-3.0. Hardware reports, translations and PRs are all welcome 🙏
 >
 > **Please read before installing:**
 > - **macOS 27:** Apple removed the documented charge-control keys, so on macOS 27 Calma runs in **monitoring mode** only (stats, power flow, health). I didn't want to write guessed values to people's charging hardware. macOS 13–26 and Intel are supported, but I need **hardware reports** to confirm specific models.
-> - **Not notarized yet** (no paid developer account), so the first launch needs right-click → Open. You can also build it from source with `swift build`.
+> - **Not notarized yet** (no paid developer account), so the first launch needs one approval in System Settings → Privacy & Security → Open Anyway. You can also build it from source with `swift build`.
 > - Don't run it alongside another charge-limiting app.
 >
 > Download: https://github.com/Milanpatel35/calma/releases/latest
@@ -149,6 +149,6 @@ GPL-3.0. Hardware reports, translations and PRs are all welcome 🙏
 >
 > What I'm proudest of is the safety design. A tiny helper is the only thing allowed to touch the charging controller, it accepts only a fixed set of commands, logs every change locally, and restores normal charging if anything goes wrong.
 >
-> Two honest notes: on **macOS 27** Calma currently runs in monitoring mode, because Apple removed the documented charging keys. And builds aren't notarized yet, so the first launch is right-click → Open.
+> Two honest notes: on **macOS 27** Calma currently runs in monitoring mode, because Apple removed the documented charging keys. And builds aren't notarized yet, so the first launch needs one approval in System Settings → Privacy & Security.
 >
 > I'd love your feedback, and if you own a MacBook model I haven't tested, a quick hardware report on GitHub would help a lot. 🙏

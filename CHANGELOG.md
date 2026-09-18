@@ -7,6 +7,15 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Added
+
+- `docs/INSTALL.md`: first-launch guide covering Gatekeeper's "Apple could not verify" dialog.
+
+### Fixed
+
+- First-launch instructions everywhere now use System Settings → Privacy & Security → Open Anyway. Apple removed the right-click → Open shortcut for non-notarized apps in macOS 15.
+- Charging controls no longer send commands the helper refuses in monitoring mode, which showed a red "Something went wrong" banner.
+
 ## [0.1.0] - 2026-09-17
 
 First public pre-release.

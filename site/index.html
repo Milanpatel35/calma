@@ -944,8 +944,8 @@
               <p>Only root can change charging behaviour. Calma installs one small helper, <code>calmad</code>, for that job. Everything else runs as your normal user.</p>
             </details>
             <details>
-              <summary>macOS says the app can't be opened. What do I do?</summary>
-              <p>Community builds aren't notarized yet. Right-click Calma in Applications and choose Open, or run <code>xattr -dr com.apple.quarantine /Applications/Calma.app</code>. You can also build it from source.</p>
+              <summary>macOS says Apple can't verify Calma. What do I do?</summary>
+              <p>Community builds aren't notarized yet, so Gatekeeper can't confirm who built the app. Click <b>Done</b>, then open  → System Settings → Privacy &amp; Security, scroll to Security and click <b>Open Anyway</b>. On macOS 13–14, right-click the app and choose Open instead. The <a href="https://github.com/Milanpatel35/calma/blob/main/docs/INSTALL.md">install guide</a> has the full steps, and building from source avoids the warning entirely.</p>
             </details>
           </div>
           <div class="faq-col">
@@ -1023,7 +1023,7 @@
             </a>
             <a class="btn btn-ghost" href="https://github.com/Milanpatel35/calma#build-from-source">Build from source</a>
           </div>
-          <small>First launch: right-click → Open, or run <code>xattr -dr com.apple.quarantine /Applications/Calma.app</code></small>
+          <small>First launch: macOS asks you to approve it once in System Settings → Privacy &amp; Security → <b>Open Anyway</b>. <a href="https://github.com/Milanpatel35/calma/blob/main/docs/INSTALL.md">Install guide →</a></small>
         </div>
       </div>
     </section>
