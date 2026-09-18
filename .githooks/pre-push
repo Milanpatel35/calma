@@ -1,0 +1,37 @@
+#!/bin/bash
+# Blocks pushing commits straight to main. Everything lands on dev first and
+# reaches main only through a reviewed dev -> main pull request.
+#
+# Enable once per clone:  Scripts/setup-hooks.sh
+# Override for a genuine emergency:  ALLOW_MAIN_PUSH=1 git push origin main
+set -uo pipefail
+
+while read -r _local_ref local_sha remote_ref _remote_sha; do
+    [[ "${remote_ref}" == "refs/heads/main" ]] || continue
+    # Deleting main is refused by the server too; let that speak for itself.
+    [[ "${local_sha}" =~ ^0+$ ]] && continue
+    if [[ "${ALLOW_MAIN_PUSH:-0}" == "1" ]]; then
+        echo "pre-push: ALLOW_MAIN_PUSH=1 — pushing to main anyway." >&2
+        continue
+    fi
+    cat >&2 <<'MSG'
+
+  Pushing to main is blocked.
+
+  main is the live branch: the website deploys from it and releases are
+  tagged on it. Commits get there through a pull request from dev.
+
+  Do this instead:
+
+    git switch dev
+    git push                      # or: git push -u origin dev
+    gh pr create --base main --head dev --title "Promote dev to main"
+
+  GitHub enforces the same rule, so a direct push would be rejected anyway.
+  Tags (git push origin vX.Y.Z) are unaffected.
+
+MSG
+    exit 1
+done
+
+exit 0

@@ -83,6 +83,10 @@ Read [docs/SAFETY.md](docs/SAFETY.md) first. It is not optional.
 
 CI must pass (build, tests, SwiftLint).
 
+### Set up hooks
+
+Run `Scripts/setup-hooks.sh` once per clone. It points git at `.githooks`, which refuses direct pushes to `main` and reminds you to go through `dev`.
+
 ### Branches
 
 | Branch | Purpose |

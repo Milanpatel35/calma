@@ -7,6 +7,11 @@ and this project follows [Semantic Versioning](https://semver.org/spec/v2.0.0.ht
 
 ## [Unreleased]
 
+### Added
+
+- `Scripts/install.sh`: one-line Terminal install that verifies the release checksum and clears the quarantine flag, so Gatekeeper's "Apple could not verify" dialog never appears.
+- `.githooks/pre-push` and `Scripts/setup-hooks.sh`: refuse direct pushes to `main`, so work goes to `dev` first.
+
 ## [0.1.1] - 2026-09-18
 
 ### Added

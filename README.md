@@ -34,6 +34,12 @@ Lithium-ion batteries wear fastest when they sit at 100%. If your Mac lives on a
 
 <a href="https://github.com/Milanpatel35/calma/releases/latest"><b>⬇️ Download the latest Calma.dmg</b></a>
 
+**Or install from Terminal, with no Gatekeeper warning** (verifies the checksum, then installs):
+
+```sh
+curl -fsSL https://raw.githubusercontent.com/Milanpatel35/calma/main/Scripts/install.sh | bash
+```
+
 1. Open the `.dmg` and drag **Calma** to **Applications**.
 2. Open Calma. Because these builds aren't notarized yet, macOS says *"Apple could not verify 'Calma' is free of malware"* and offers only **Move to Trash** and **Done**. Click **Done**, then:
    - **macOS 15 or later** (including 26 and 27):  **→ System Settings → Privacy & Security**, scroll to **Security**, click **Open Anyway** next to *"Calma" was blocked*, and confirm. Apple removed the old right-click → Open shortcut in macOS 15.
